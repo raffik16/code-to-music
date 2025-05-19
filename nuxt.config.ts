@@ -4,6 +4,12 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
   ],
   css: ['~/assets/styles/main.css'],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
   vite: {
     optimizeDeps: {
       include: [
