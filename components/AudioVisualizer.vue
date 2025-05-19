@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-64 bg-gray-900 rounded-lg p-4">
+  <div class="w-full h-64 bg-dark-purple p-4">
     <canvas ref="canvas" class="w-full h-full"></canvas>
   </div>
 </template>
@@ -58,8 +58,8 @@ const draw = () => {
   const width = canvas.value.width
   const height = canvas.value.height
   
-  // Clear canvas with dark background
-  canvasCtx.fillStyle = 'rgb(17, 24, 39)' // Dark gray background
+  // Clear canvas with dark purple background
+  canvasCtx.fillStyle = '#5a3962' // Dark purple background
   canvasCtx.fillRect(0, 0, width, height)
   
   let shouldDrawWaveform = false
@@ -77,7 +77,7 @@ const draw = () => {
   if (shouldDrawWaveform) {
     // Draw waveform
     canvasCtx.lineWidth = 2
-    canvasCtx.strokeStyle = 'rgb(147, 51, 234)' // Purple color
+    canvasCtx.strokeStyle = '#e6acee' // Light pink color
     canvasCtx.beginPath()
     
     const sliceWidth = width / waveform.length
@@ -102,7 +102,7 @@ const draw = () => {
     canvasCtx.stroke()
   } else {
     // Draw idle state (just a centered horizontal line)
-    canvasCtx.strokeStyle = 'rgba(147, 51, 234, 0.3)' // Faded purple
+    canvasCtx.strokeStyle = 'rgba(230, 172, 238, 0.3)' // Faded light pink
     canvasCtx.lineWidth = 2
     canvasCtx.beginPath()
     canvasCtx.moveTo(0, height / 2)

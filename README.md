@@ -35,8 +35,8 @@ Turn your code into music! Code Composer transforms every character in your sour
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/code-composer.git
-cd code-composer
+git clone https://github.com/raffik16/code-to-music.git
+cd code-to-music
 
 # Install dependencies
 npm install

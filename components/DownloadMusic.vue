@@ -1,11 +1,11 @@
 <template>
   <div class="mt-4">
-    <h3 class="text-lg font-semibold mb-2">Download Music</h3>
+    <h3 class="text-lg font-semibold mb-2 text-bright-purple">Download Music</h3>
     <div class="flex gap-3">
       <button 
         @click="downloadMP3"
         :disabled="(!canDownload && !isLiveMode) || localIsRecording"
-        class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
+        class="px-4 py-2 bg-dark-purple text-light-pink hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed flex items-center transition-opacity"
       >
         <svg v-if="localIsRecording || props.isRecording" class="animate-spin h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24">
           <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -19,10 +19,10 @@
       </button>
     </div>
     
-    <div v-if="!canDownload && !isLiveMode" class="mt-2 text-sm text-gray-500 italic">
+    <div v-if="!canDownload && !isLiveMode" class="mt-2 text-sm text-dark-purple italic">
       Generate music first to enable download
     </div>
-    <div v-if="isLiveMode" class="mt-2 text-sm text-gray-500 italic">
+    <div v-if="isLiveMode" class="mt-2 text-sm text-dark-purple italic">
       {{ props.isRecording ? 'Recording... Click again to download' : 'Click to start recording' }}
     </div>
   </div>

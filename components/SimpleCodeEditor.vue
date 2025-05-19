@@ -2,14 +2,14 @@
   <div class="w-full">
     <div 
       v-if="highlightCharIndex >= 0"
-      class="w-full h-[400px] p-4 font-mono text-sm bg-gray-900 border border-gray-700 rounded-lg overflow-y-auto"
+      class="w-full h-[400px] p-4 font-mono text-sm bg-dark-purple border-2 border-bright-purple overflow-y-auto"
     >
       <pre>
 <span v-for="(char, index) in Array.from(modelValue)" :key="index"
       :class="{
-        'bg-yellow-500 text-black': index === highlightCharIndex,
-        'text-gray-500': index < highlightCharIndex,
-        'text-gray-100': index > highlightCharIndex
+        'bg-light-pink text-dark-purple': index === highlightCharIndex,
+        'text-bright-purple': index < highlightCharIndex,
+        'text-light-pink': index > highlightCharIndex
       }"
 >{{ char }}</span>
       </pre>
@@ -20,7 +20,7 @@
       @input="$emit('update:modelValue', $event.target.value)"
       @keypress="handleKeypress"
       @paste="handlePaste"
-      class="w-full h-[400px] p-4 font-mono text-sm bg-gray-900 text-gray-100 border border-gray-700 rounded-lg focus:outline-none focus:border-indigo-500"
+      class="w-full h-[400px] p-4 font-mono text-sm bg-dark-purple text-light-pink border-2 border-dark-purple focus:outline-none focus:border-bright-purple"
       :placeholder="placeholder"
     ></textarea>
   </div>

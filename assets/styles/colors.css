@@ -1,0 +1,25 @@
+:root {
+  /* Primary Colors */
+  --color-bright-purple: #cd83de;
+  --color-dark-purple: #5a3962;
+  --color-light-pink: #e6acee;
+  
+  /* Semantic Colors */
+  --color-primary: var(--color-dark-purple);
+  --color-secondary: var(--color-bright-purple);
+  --color-background: var(--color-light-pink);
+  --color-text-primary: var(--color-dark-purple);
+  --color-text-secondary: #ffffff;
+  --color-text-light: var(--color-light-pink);
+  
+  /* Neutral Colors */
+  --color-gray-100: #f8f8f8;
+  --color-gray-200: #e8e8e8;
+  --color-gray-300: #d8d8d8;
+  --color-gray-400: #888888;
+  --color-gray-500: #666666;
+  --color-gray-600: #444444;
+  --color-gray-700: #333333;
+  --color-gray-800: #222222;
+  --color-gray-900: #111111;
+}

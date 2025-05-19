@@ -1,0 +1,73 @@
+@import './colors.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base Styles */
+body {
+  @apply bg-light-pink text-dark-purple;
+  background-color: var(--color-light-pink);
+  color: var(--color-text-primary);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  @apply text-bright-purple;
+  color: var(--color-bright-purple);
+}
+
+/* Flat Design - Remove shadows and borders globally */
+* {
+  box-shadow: none !important;
+}
+
+/* Button Base Styles */
+button {
+  @apply transition-colors duration-200;
+}
+
+/* Primary Button */
+.btn-primary {
+  @apply bg-dark-purple text-light-pink px-4 py-2 rounded-none;
+  background-color: var(--color-dark-purple);
+  color: var(--color-light-pink);
+}
+
+.btn-primary:hover {
+  @apply opacity-90;
+}
+
+.btn-primary:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+/* Secondary Button */
+.btn-secondary {
+  @apply bg-bright-purple text-white px-4 py-2 rounded-none;
+  background-color: var(--color-bright-purple);
+}
+
+.btn-secondary:hover {
+  @apply opacity-90;
+}
+
+/* Flat Card Design */
+.flat-card {
+  @apply bg-white p-4 rounded-none;
+  border: none;
+  box-shadow: none;
+}
+
+/* Input Styles */
+input, textarea, select {
+  @apply border-2 border-dark-purple rounded-none bg-white text-dark-purple;
+  border-color: var(--color-dark-purple);
+  &::placeholder {
+    color: var(--color-bright-purple);
+  }
+}
+
+input:focus, textarea:focus, select:focus {
+  @apply outline-none border-bright-purple;
+  border-color: var(--color-bright-purple);
+}

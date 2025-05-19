@@ -3,6 +3,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/tailwindcss',
   ],
+  css: ['~/assets/styles/main.css'],
   vite: {
     optimizeDeps: {
       include: [
