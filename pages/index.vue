@@ -70,6 +70,8 @@
         />
       </div>
     </div>
+    
+    <AppFooter />
   </div>
 </template>
 
@@ -81,6 +83,7 @@ import { useCharacterMusic } from '@/composables/useCharacterMusic'
 import { useLiveTypeAudio } from '@/composables/useLiveTypeAudio'
 import PlaybackMode from '@/components/PlaybackMode.vue'
 import DownloadMusic from '@/components/DownloadMusic.vue'
+import AppFooter from '@/components/AppFooter.vue'
 
 const codeStore = useCodeStore()
 const { 
