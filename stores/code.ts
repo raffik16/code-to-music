@@ -9,7 +9,9 @@ export const useCodeStore = defineStore('code', {
   
   actions: {
     setCode(newCode) {
+      console.log('Store.setCode called with:', newCode)
       this.code = newCode
+      console.log('Store.code after setting:', this.code)
       this.detectLanguage()
     },
     

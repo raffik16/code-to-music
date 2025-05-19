@@ -26,8 +26,35 @@ export const useAudioEngine = () => {
       
       // Clean up previous instances
       console.log('Cleaning up previous instances...')
-      synths.forEach(synth => synth.dispose())
-      parts.forEach(part => part.dispose())
+      
+      // Stop transport and cancel scheduled events
+      if (Tone.Transport.state === 'started') {
+        Tone.Transport.stop()
+      }
+      Tone.Transport.cancel()
+      Tone.Transport.position = 0
+      
+      // Dispose of synths
+      synths.forEach(synth => {
+        try {
+          synth.dispose()
+        } catch (error) {
+          console.error('Error disposing synth:', error)
+        }
+      })
+      
+      // Stop and dispose of parts
+      parts.forEach(part => {
+        try {
+          part.stop(0)
+          part.cancel()
+          part.dispose()
+        } catch (error) {
+          console.error('Error disposing part:', error)
+        }
+      })
+      
+      // Clear arrays and reset state
       synths = []
       parts = []
       characterSequence = null
@@ -244,14 +271,33 @@ export const useAudioEngine = () => {
   
   const stopAudio = () => {
     console.log('Stopping audio')
-    Tone.Transport.stop()
-    parts.forEach((part, index) => {
-      console.log(`Stopping part ${index}`)
-      part.stop()
-    })
-    isPlaying.value = false
-    currentCharIndex.value = -1
-    console.log('Transport state:', Tone.Transport.state)
+    try {
+      // Stop the transport first
+      Tone.Transport.stop()
+      Tone.Transport.cancel() // Cancel all scheduled events
+      
+      // Clear the transport position
+      Tone.Transport.position = 0
+      
+      // Stop and dispose of parts
+      parts.forEach((part, index) => {
+        console.log(`Stopping part ${index}`)
+        try {
+          part.stop(0) // Stop at time 0 to avoid negative values
+          part.cancel() // Cancel all scheduled events
+          part.dispose() // Dispose of the part
+        } catch (partError) {
+          console.error(`Error stopping part ${index}:`, partError)
+        }
+      })
+      parts = [] // Clear the parts array
+      
+      isPlaying.value = false
+      currentCharIndex.value = -1
+      console.log('Transport state:', Tone.Transport.state)
+    } catch (error) {
+      console.error('Error stopping audio:', error)
+    }
   }
   
   const downloadMP3 = async () => {
@@ -327,14 +373,47 @@ export const useAudioEngine = () => {
   
   const resetAudio = () => {
     console.log('Resetting audio engine')
-    stopAudio()
-    synths.forEach(synth => synth.dispose())
-    parts.forEach(part => part.dispose())
-    synths = []
-    parts = []
-    characterSequence = null
-    currentCharIndex.value = -1
-    hasGenerated.value = false
+    
+    try {
+      // Stop the transport first
+      if (Tone.Transport.state === 'started') {
+        Tone.Transport.stop()
+      }
+      Tone.Transport.cancel()
+      Tone.Transport.position = 0
+      
+      // Dispose of synths
+      synths.forEach(synth => {
+        try {
+          synth.dispose()
+        } catch (error) {
+          console.error('Error disposing synth during reset:', error)
+        }
+      })
+      
+      // Stop and dispose of parts
+      parts.forEach(part => {
+        try {
+          part.stop(0)
+          part.cancel()
+          part.dispose()
+        } catch (error) {
+          console.error('Error disposing part during reset:', error)
+        }
+      })
+      
+      // Clear everything
+      synths = []
+      parts = []
+      characterSequence = null
+      currentCharIndex.value = -1
+      hasGenerated.value = false
+      isPlaying.value = false
+      
+      console.log('Audio engine reset complete')
+    } catch (error) {
+      console.error('Error during audio reset:', error)
+    }
   }
   
   return {

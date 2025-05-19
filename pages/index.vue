@@ -1,16 +1,17 @@
 <template>
   <div class="container mx-auto p-4">
-    <h1 class="text-3xl font-bold mb-6">Code Composer</h1>
+    <h1 class="text-3xl font-bold mb-6">Turn Your Code Into Music</h1>
     
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
       <!-- Code Input Section -->
       <div class="rounded-lg shadow-lg p-4">
         <h2 class="text-xl mb-2">Your Code</h2>
         <SimpleCodeEditor 
-          @update:code="updateCode" 
+          v-model="codeText"
           @char:typed="handleCharTyped"
           :highlightCharIndex="playbackMode === 'character' && isPlaying ? currentCharIndex : -1"
           :isLiveMode="playbackMode === 'live'"
+          :key="editorKey"
         />
         
         <!-- Playback Mode Selector -->
@@ -100,6 +101,19 @@ const lineBreakSound = ref('gong')
 const isGenerating = ref(false)
 const liveAudioData = ref([])
 const isRecording = ref(false)
+const editorKey = ref(0)
+
+// Create a local ref that syncs with the store
+const codeText = computed({
+  get: () => {
+    console.log('Getting code from store:', codeStore.code)
+    return codeStore.code
+  },
+  set: (value) => {
+    console.log('Setting code in store to:', value)
+    codeStore.setCode(value)
+  }
+})
 
 const { createCharacterSequence } = useCharacterMusic()
 const { 
@@ -112,11 +126,10 @@ const {
   isActive: isLiveTypeActive 
 } = useLiveTypeAudio()
 
-const updateCode = (newCode) => {
-  codeStore.setCode(newCode)
-}
 
 const updatePlaybackMode = async (mode) => {
+  console.log('Switching playback mode to:', mode)
+  
   // Stop any currently playing audio
   if (isPlaying.value) {
     stopAudio()
@@ -130,14 +143,32 @@ const updatePlaybackMode = async (mode) => {
   
   playbackMode.value = mode
   
-  // Handle live mode
+  // Handle mode-specific code changes
   if (mode === 'live') {
+    // Clear code when entering live mode
+    console.log('Entering live mode, clearing code')
+    codeStore.setCode('')
+    editorKey.value++  // Force re-render of editor
+    
     await initLiveType()
     // Start polling for audio data
     startLiveAudioPolling()
-  } else if (isLiveTypeActive.value) {
-    stopLiveType()
-    stopLiveAudioPolling()
+  } else {
+    // Restore default code when leaving live mode
+    console.log('Leaving live mode, restoring default code')
+    const defaultCode = `// Paste your code here
+// or write something new
+
+function helloWorld() {
+  console.log("Hello, musical world!");
+}`
+    codeStore.setCode(defaultCode)
+    editorKey.value++  // Force re-render of editor
+    
+    if (isLiveTypeActive.value) {
+      stopLiveType()
+      stopLiveAudioPolling()
+    }
   }
 }
 
@@ -166,6 +197,13 @@ const updateLineBreakSound = (sound) => {
 
 const generateMusic = async () => {
   console.log('Generate music clicked')
+  console.log('Current state:', {
+    playbackMode: playbackMode.value,
+    isGenerating: isGenerating.value,
+    hasGenerated: hasGenerated.value,
+    codeLength: codeStore.code?.length,
+    isPlaying: isPlaying.value
+  })
   
   // Skip check in live mode since it's not used
   if (playbackMode.value === 'live') {
@@ -207,6 +245,10 @@ const generateMusic = async () => {
     console.error('Error generating music:', error)
   } finally {
     isGenerating.value = false
+    console.log('Generation complete. Final state:', {
+      isGenerating: isGenerating.value,
+      hasGenerated: hasGenerated.value
+    })
   }
 }
 
@@ -252,7 +294,7 @@ const handleDownloadMP3 = async () => {
 
 const resetCode = async () => {
   console.log('Reset button clicked')
-  const wasInLiveMode = playbackMode.value === 'live'
+  console.log('Current playback mode:', playbackMode.value)
   
   try {
     // Stop everything first
@@ -272,20 +314,35 @@ const resetCode = async () => {
       isRecording.value = false
     }
     
-    // Clear the code
-    codeStore.setCode('')
-    
     // Reset states
     isGenerating.value = false
     liveAudioData.value = []
     
-    // Reset the audio engine for non-live modes
-    if (!wasInLiveMode) {
-      resetAudio()
+    // Reset the audio engine
+    resetAudio()
+    
+    // Clear the code based on current mode
+    if (playbackMode.value === 'live') {
+      // For live mode, clear the code completely
+      console.log('Clearing code for live mode')
+      codeStore.setCode('')
+      editorKey.value++  // Force re-render of editor
+      console.log('Code after clearing:', codeStore.code)
+    } else {
+      // For character mode, restore default code
+      console.log('Restoring default code for character mode')
+      const defaultCode = `// Paste your code here
+// or write something new
+
+function helloWorld() {
+  console.log("Hello, musical world!");
+}`
+      codeStore.setCode(defaultCode)
+      editorKey.value++  // Force re-render of editor
     }
     
-    // Reinitialize live mode if it was active
-    if (wasInLiveMode) {
+    // Reinitialize live mode if currently active
+    if (playbackMode.value === 'live') {
       console.log('Reinitializing live mode after reset')
       await initLiveType()
       startLiveAudioPolling()

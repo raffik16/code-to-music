@@ -1,75 +1,127 @@
-# Nuxt Minimal Starter
+# Code Composer
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Turn your code into music! Code Composer transforms every character in your source code into unique musical compositions, creating a symphony from your programming.
 
-## Setup
+## Features
 
-Make sure to install dependencies:
+### 🎵 Two Playback Modes
+
+1. **Character-by-Character**: Plays through your code sequentially, with each character producing its unique sound
+2. **Live Type (Musical Keyboard)**: Turn your keyboard into a musical instrument - every keystroke plays a sound in real-time
+
+### 🎹 Sound Mapping
+
+- **Letters** → Musical notes (lowercase and uppercase in different octaves)
+- **Numbers** → Higher octave notes
+- **Symbols** → Percussion sounds (brackets, operators, punctuation)
+- **Line Breaks** → Customizable special effects (gong, cymbal crash, wind chime, bell, harp gliss, and more!)
+
+### 🎨 Visual & Audio Features
+
+- Real-time waveform visualization
+- Character highlighting during playback
+- MP3 download for your compositions
+- Live recording for typing sessions
+- Customizable line break sounds
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm or pnpm
+
+### Installation
 
 ```bash
-# npm
-npm install
+# Clone the repository
+git clone https://github.com/yourusername/code-composer.git
+cd code-composer
 
-# pnpm
+# Install dependencies
+npm install
+# or
 pnpm install
 
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
+# Start development server
 npm run dev
-
-# pnpm
+# or
 pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+### Usage
 
-Build the application for production:
+1. Open the app in your browser at `http://localhost:3000`
+2. Choose your playback mode:
+   - **Character-by-Character**: Paste code and click "Generate Music"
+   - **Live Type**: Start typing to hear music immediately
+3. Customize your line break sound from the dropdown
+4. Watch the visualization and listen to your code
+5. Download your creation as an MP3 when you're ready
+
+## Development
+
+This project uses:
+- **Nuxt 3** - Vue.js framework
+- **Tone.js** - Web audio synthesis and scheduling
+- **Tailwind CSS** - Styling
+- **TypeScript** - Type safety
+
+### Project Structure
+
+```
+code-to-music/
+├── components/       # Vue components
+├── composables/      # Composition API utilities
+├── pages/           # App pages
+├── stores/          # Pinia stores
+└── assets/          # Static assets
+```
+
+### Key Components
+
+- **SimpleCodeEditor**: Code input with syntax highlighting
+- **AudioVisualizer**: Real-time waveform display
+- **MusicControls**: Playback controls
+- **PlaybackMode**: Mode selector and settings
+- **DownloadMusic**: MP3 export functionality
+
+### Building for Production
 
 ```bash
-# npm
 npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
 npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Tips for Better Music
+
+- Mix uppercase and lowercase letters for melodic variety
+- Use symbols strategically to add percussion accents
+- Try different line break sounds to find your favorite rhythm
+- In live mode, experiment with typing speed to create different beats
+- Combine letters, numbers, and symbols for rich compositions
+
+## Character Sound Reference
+
+| Character Type | Sound | 
+|---------------|-------|
+| Lowercase letters (a-z) | Notes: C4-B4 range |
+| Uppercase letters (A-Z) | Notes: C5-B5 range |
+| Numbers (0-9) | Notes: C6-B6 range |
+| Brackets (), [], {} | Percussion: kick, snare, hihat |
+| Operators +, -, *, / | Percussion: tom, splash, china |
+| Special chars @, #, $ | Effects: bell, coin, triangle |
+| Line breaks | Customizable special effects |
+
+## License
+
+MIT
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## Acknowledgments
+
+- Built with [Tone.js](https://tonejs.github.io/) for web audio
+- Inspired by the beauty of code and music

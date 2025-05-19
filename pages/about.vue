@@ -5,54 +5,75 @@
     <div class="prose max-w-none">
       <p class="text-lg mb-4">
         Code Composer transforms your source code into unique musical compositions.
-        By analyzing the structure, complexity, and patterns in your code, it creates 
-        melodies, harmonies, and rhythms that reflect the essence of your programming.
+        Every character, symbol, and line break in your code becomes a musical note,
+        creating a symphony that represents your programming in real-time.
       </p>
       
-      <h2 class="text-2xl font-bold mt-8 mb-4">How It Works</h2>
-      
-      <ul class="list-disc list-inside space-y-2">
-        <li><strong>Code Analysis:</strong> We parse your code to understand its structure</li>
-        <li><strong>Pattern Recognition:</strong> Functions, loops, and conditionals are identified</li>
-        <li><strong>Musical Mapping:</strong> Code elements are mapped to musical parameters</li>
-        <li><strong>Audio Generation:</strong> Using Web Audio API, we create your unique soundtrack</li>
-      </ul>
-      
-      <h2 class="text-2xl font-bold mt-8 mb-4">Musical Elements</h2>
+      <h2 class="text-2xl font-bold mt-8 mb-4">Playback Modes</h2>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-        <div class="bg-white rounded-lg shadow p-4">
-          <h3 class="font-bold text-lg mb-2">Functions → Melodies</h3>
-          <p>Each function becomes a melodic phrase with notes based on its complexity</p>
+        <div class="bg-gray-900 rounded-lg shadow p-4">
+          <h3 class="font-bold text-lg mb-2 text-white">Character-by-Character</h3>
+          <p class="text-white">Plays through your code sequentially, with each character producing its unique sound. Perfect for experiencing the rhythm and flow of your code.</p>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-4">
-          <h3 class="font-bold text-lg mb-2">Loops → Rhythms</h3>
-          <p>Iterative structures create rhythmic patterns and drum beats</p>
-        </div>
-        
-        <div class="bg-white rounded-lg shadow p-4">
-          <h3 class="font-bold text-lg mb-2">Conditionals → Harmonies</h3>
-          <p>If/else branches add harmonic variations and chord progressions</p>
-        </div>
-        
-        <div class="bg-white rounded-lg shadow p-4">
-          <h3 class="font-bold text-lg mb-2">Complexity → Tempo</h3>
-          <p>More complex code results in faster, more dynamic compositions</p>
+        <div class="bg-gray-900 rounded-lg shadow p-4">
+          <h3 class="font-bold text-lg mb-2 text-white">Live Type (Musical Keyboard)</h3>
+          <p class="text-white">Turn your keyboard into a musical instrument! Every keystroke plays a sound in real-time, making coding a musical performance.</p>
         </div>
       </div>
       
-      <h2 class="text-2xl font-bold mt-8 mb-4">Supported Languages</h2>
+      <h2 class="text-2xl font-bold mt-8 mb-4">Character Sound Mapping</h2>
       
-      <p>
-        Currently, Code Composer supports JavaScript, Python, and Java, with more 
-        languages coming soon. Each language has its own musical character:
-      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <div class="bg-gray-900 rounded-lg shadow p-4">
+          <h3 class="font-bold text-lg mb-2 text-white">Letters → Musical Notes</h3>
+          <p class="text-white">Each letter maps to a specific musical note. Lowercase letters play in one octave, uppercase in another, creating melodic variations.</p>
+        </div>
+        
+        <div class="bg-gray-900 rounded-lg shadow p-4">
+          <h3 class="font-bold text-lg mb-2 text-white">Numbers → Higher Notes</h3>
+          <p class="text-white">Numeric characters (0-9) map to higher octave notes, adding brightness to your musical code.</p>
+        </div>
+        
+        <div class="bg-gray-900 rounded-lg shadow p-4">
+          <h3 class="font-bold text-lg mb-2 text-white">Symbols → Percussion</h3>
+          <p class="text-white">Special characters like brackets, operators, and punctuation trigger percussion sounds including kicks, snares, and hi-hats.</p>
+        </div>
+        
+        <div class="bg-gray-900 rounded-lg shadow p-4">
+          <h3 class="font-bold text-lg mb-2 text-white">Line Breaks → Special Effects</h3>
+          <p class="text-white">Customize how line breaks sound with options like gong, cymbal crash, wind chime, bell, harp gliss, and more!</p>
+        </div>
+      </div>
+      
+      <h2 class="text-2xl font-bold mt-8 mb-4">Features</h2>
+      
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Real-time Visualization:</strong> Watch the waveform as your code plays</li>
+        <li><strong>Character Highlighting:</strong> See which character is currently playing</li>
+        <li><strong>MP3 Download:</strong> Save your code music as an MP3 file</li>
+        <li><strong>Live Recording:</strong> Record your live typing sessions</li>
+        <li><strong>Customizable Sounds:</strong> Choose different sounds for line breaks</li>
+      </ul>
+      
+      <h2 class="text-2xl font-bold mt-8 mb-4">How to Use</h2>
+      
+      <ol class="list-decimal list-inside space-y-2 mt-4">
+        <li>Choose your playback mode (Character-by-Character or Live Type)</li>
+        <li>Paste your code or start typing in the editor</li>
+        <li>Click "Generate Music" for character mode or just start typing in live mode</li>
+        <li>Watch the visualization and listen to your code come alive</li>
+        <li>Download your creation as an MP3 when you're done</li>
+      </ol>
+      
+      <h2 class="text-2xl font-bold mt-8 mb-4">Tips</h2>
       
       <ul class="list-disc list-inside space-y-2 mt-4">
-        <li><strong>JavaScript:</strong> C Major scale with bright, dynamic tones</li>
-        <li><strong>Python:</strong> D Dorian mode with smooth, flowing melodies</li>
-        <li><strong>Java:</strong> E Minor scale with structured, classical progressions</li>
+        <li>Try different line break sounds to find your favorite</li>
+        <li>In live mode, experiment with typing rhythm to create beats</li>
+        <li>Mix uppercase and lowercase letters for melodic variety</li>
+        <li>Use symbols strategically to add percussion accents</li>
       </ul>
     </div>
   </div>
