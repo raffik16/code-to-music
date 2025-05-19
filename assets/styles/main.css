@@ -71,3 +71,10 @@ input:focus, textarea:focus, select:focus {
   @apply outline-none border-bright-purple;
   border-color: var(--color-bright-purple);
 }
+
+/* Mobile text size override */
+@media (max-width: 640px) {
+  .text-sm {
+    font-size: 16px !important;
+  }
+}

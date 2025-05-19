@@ -14,6 +14,9 @@ export default {
         'bright-purple': '#cd83de',
         'dark-purple': '#5a3962',
         'light-pink': '#e6acee',
+      },
+      fontSize: {
+        'sm': ['14px', '20px'],
       }
     }
   },
