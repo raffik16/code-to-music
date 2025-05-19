@@ -61,13 +61,13 @@
           @stop="stopMusic" 
         />
         
-        <!-- Download options -->
-        <DownloadMusic 
+        <!-- Download options - Hidden for now -->
+        <!-- <DownloadMusic 
           :canDownload="hasGenerated"
           :isLiveMode="playbackMode === 'live'"
           :isRecording="isRecording"
           @download:mp3="handleDownloadMP3"
-        />
+        /> -->
       </div>
     </div>
     
